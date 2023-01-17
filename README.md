@@ -1,4 +1,99 @@
 # AP18110010326-CD-LAB
+
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Report {
+	public static void main(String[] args) throws JRException {
+		try {
+			//String filePath = "C:\\Users\\usman\\pp\\src\\resources\\Simple_Blue.jrxml";
+			//String filePath1="C:\\Users\\usman\\pp\\src\\resources\\Leaf_Green_1.jrxml";
+			String filePath2="C:\\Users\\usman\\pp\\src\\resources\\Blank_A4_2.jrxml";
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("ptr1", "$4551");
+			parameters.put("ptr2", "$2342");
+			parameters.put("ptr3", "$3443");
+			parameters.put("ptr4", "$554");
+			parameters.put("ptr5", "$2235");
+			parameters.put("act1", "$345");
+			parameters.put("act2", "$35");
+			parameters.put("act3", "$534");
+			parameters.put("act4", "$3532");
+			parameters.put("act5", "$5225");
+			parameters.put("ccv1", "$45");
+			parameters.put("ccv2", "$45");
+			parameters.put("ccv3", "$534");
+			parameters.put("ccv4", "$32");
+			parameters.put("ccv5", "$235");
+			parameters.put("nct1", "$405");
+			parameters.put("nct2", "$345");
+			parameters.put("nct3", "$434");
+			parameters.put("nct4", "$542");
+			parameters.put("nct5", "$235");
+			parameters.put("ts1", "$540");
+			parameters.put("ts2", "$35");
+			parameters.put("ts3", "$453");
+			parameters.put("ts4", "$342");
+			parameters.put("ts5", "$235");
+			parameters.put("acv1", "$44");
+			parameters.put("acv2", "$54");
+			parameters.put("acv3", "$4534");
+			parameters.put("acv4", "$432");
+			parameters.put("acv5", "$535");
+			/*List<Student> studentList = new ArrayList();
+			Student student = new Student(1, "sd", "sf",
+					"ffe", "sff");
+			Student student1 = new Student(2, "d", "sf",
+					"fe", "sf");
+			studentList.add(student);
+			studentList.add(student1);
+			List<User> userList=new ArrayList<>();
+			User user=new User(1,"jsnjs",new BigDecimal(1.2));
+			User user1=new User(11,"jsnjs",new BigDecimal(1.1));
+			User user2=new User(111,"jsnjs",new BigDecimal(1));
+			userList.add(user);userList.add(user1);userList.add(user2);
+			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentList);*/
+			JREmptyDataSource dataSource2 = new JREmptyDataSource(1);
+			//JasperReport report = JasperCompileManager.compileReport(filePath);
+			JasperReport report2 = JasperCompileManager.compileReport(filePath2);
+			JasperPrint print = JasperFillManager.fillReport(report2, parameters, dataSource2);
+			/*JasperPrint print1 = JasperFillManager.fillReport(report1, parameters, dataSource1);
+			List<JasperPrint> jasperPrintList = new ArrayList<JasperPrint>();
+			jasperPrintList.add(print);jasperPrintList.add(print1);
+			JRPdfExporter exporter = new JRPdfExporter();
+			exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrintList)); //Set as export input my list with JasperPrint s
+			exporter.setExporterOutput(new SimpleOutputStreamExporterOutput("D:\\pdfreports\\report.pdf")); //or any other out streaam
+			SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+			configuration.setCreatingBatchModeBookmarks(true); //add this so your bookmarks work, you may set other parameters
+			exporter.setConfiguration(configuration);
+			exporter.exportReport();*/
+			JasperExportManager.exportReportToPdfFile(print, "D:\\pdfreports\\roiTable.pdf");
+			System.out.println("report created");
+		}
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df7b386d-ea38-44d8-bcf6-e30d386494f9">
